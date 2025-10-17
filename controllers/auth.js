@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import usuariosService from "../services/usuario.js";
+import usuariosService from "../services/usuario-seq.js";
 
 
 const register = async (req, res) => {

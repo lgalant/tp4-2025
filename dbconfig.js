@@ -1,8 +1,4 @@
-// export POSTGRES_HOST=ep-blue-feather-a4ve7rp2.us-east-1.aws.neon 
-// export POSTGRES_USER=default
-// export POSTGRES_PASSWORD=xxxxx
-// 
-
+import "dotenv/config";
 
 export const config = {
     host :process.env.PGHOST,
@@ -13,5 +9,16 @@ export const config = {
     ssl: true
 }
 
+console.log("*** DB Config ****")
+import { Sequelize } from "sequelize";
 
- 
+export const sequelize = new Sequelize(process.env.DB_URL, {dialect: "postgres"});
+
+try {
+    await sequelize.authenticate();
+    console.log("Connection has been established successfully.");
+} catch (error) {
+    console.error("Unable to connect to the database:", error);
+}
+//await sequelize.close();
+

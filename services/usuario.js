@@ -40,3 +40,4 @@ const createUsuario = async (usuario) => {
 };
 
 export default { getUsuarioById, createUsuario };
+ 

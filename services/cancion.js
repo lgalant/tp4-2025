@@ -11,7 +11,6 @@ const getCanciones = async (id) => {
             "SELECT * FROM escucha WHERE usuario = $1",
             [id]
         );
-        if (rows.length < 1) return null;
 
         await client.end();
         return rows;

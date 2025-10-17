@@ -1,6 +1,7 @@
 
-import cancionService from "../services/cancion.js";
+import cancionService from "../services/cancion-seq.js";
 
+console.log("*** Cancion controller ****")
 const getCanciones = async (req, res) => {
     console.log
     try {
@@ -12,12 +13,12 @@ const getCanciones = async (req, res) => {
 }
 
 const escuchoCancion = async (req, res) => {
-    const cancion = req.body;
-    if (!cancion.usuario || !cancion.cancion) {
+    const escucha = req.body;
+    if ( !escucha.cancion) {
         return res.status(400).json({ message: "Hay 1 campo o más sin completar" });
     }
     try {
-        const nuevaCancion = await cancionService.escuchoCancion(cancion);
+        const nuevaCancion = await cancionService.escuchoCancion(escucha.cancion, req.user.id);
         return res.status(201).json(nuevaCancion);
     } catch (error) {
         return res.status(500).json({ message: error.message });

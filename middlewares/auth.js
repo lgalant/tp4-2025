@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import usuariosService from "../services/usuario.js";
+import usuariosService from "../services/usuario-seq.js";
 
 export const verifyToken = async (req, res, next) => {
     console.log("Verifying token...");
